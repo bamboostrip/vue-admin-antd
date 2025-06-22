@@ -1,0 +1,171 @@
+/**
+ * @description Ant Design Vue 主题样式
+ * @description 在此查阅所有可自定义的变量：https://ant.design/docs/react/customize-theme-cn
+ */
+
+/* 默认主题 */
+html.normal {
+  /* Ant Design Vue CSS 变量 */
+  --ant-primary-color: #1890ff;
+  --ant-success-color: #52c41a;
+  --ant-warning-color: #faad14;
+  --ant-error-color: #f5222d;
+  --ant-info-color: #1890ff;
+  --ant-text-color: rgba(0, 0, 0, 0.85);
+  --ant-text-color-secondary: rgba(0, 0, 0, 0.65);
+  --ant-text-color-disabled: rgba(0, 0, 0, 0.25);
+  --ant-border-color-base: #d9d9d9;
+  --ant-background-color-base: #fff;
+  --ant-background-color-light: #fafafa;
+}
+
+/* 暗色主题 */
+html.dark {
+  /* Ant Design Vue CSS 变量 - 暗色主题 */
+  --ant-primary-color: #1890ff;
+  --ant-success-color: #52c41a;
+  --ant-warning-color: #faad14;
+  --ant-error-color: #f5222d;
+  --ant-info-color: #1890ff;
+  --ant-text-color: rgba(255, 255, 255, 0.85);
+  --ant-text-color-secondary: rgba(255, 255, 255, 0.65);
+  --ant-text-color-disabled: rgba(255, 255, 255, 0.25);
+  --ant-border-color-base: #434343;
+  --ant-background-color-base: #141414;
+  --ant-background-color-light: #1f1f1f;
+}
+
+/* 深蓝主题 */
+html.dark-blue {
+  /* Ant Design Vue CSS 变量 - 深蓝主题 */
+  --ant-primary-color: #00bb99;
+  --ant-success-color: #67c23a;
+  --ant-warning-color: #e6a23c;
+  --ant-error-color: #f56c6c;
+  --ant-info-color: #00bb99;
+  --ant-text-color: #e5eaf3;
+  --ant-text-color-secondary: #cfd3dc;
+  --ant-text-color-disabled: #6c6e72;
+  --ant-border-color-base: #003380;
+  --ant-background-color-base: #001b44;
+  --ant-background-color-light: #002359;
+}
+
+/* 应用 Ant Design Vue 主题变量到组件 */
+.ant-btn-primary {
+  background-color: var(--ant-primary-color);
+  border-color: var(--ant-primary-color);
+}
+
+.ant-btn-primary:hover {
+  background-color: var(--ant-primary-color);
+  border-color: var(--ant-primary-color);
+  opacity: 0.8;
+}
+
+.ant-input {
+  background-color: var(--ant-background-color-base);
+  border-color: var(--ant-border-color-base);
+  color: var(--ant-text-color);
+}
+
+.ant-input:focus {
+  border-color: var(--ant-primary-color);
+}
+
+.ant-select-selector {
+  background-color: var(--ant-background-color-base) !important;
+  border-color: var(--ant-border-color-base) !important;
+  color: var(--ant-text-color) !important;
+}
+
+.ant-select-focused .ant-select-selector {
+  border-color: var(--ant-primary-color) !important;
+}
+
+.ant-table {
+  background-color: var(--ant-background-color-base);
+  color: var(--ant-text-color);
+}
+
+.ant-table-thead > tr > th {
+  background-color: var(--ant-background-color-light);
+  color: var(--ant-text-color);
+  border-bottom-color: var(--ant-border-color-base);
+}
+
+.ant-table-tbody > tr > td {
+  border-bottom-color: var(--ant-border-color-base);
+}
+
+.ant-table-tbody > tr:hover > td {
+  background-color: var(--ant-background-color-light);
+}
+
+.ant-menu {
+  background-color: var(--ant-background-color-base);
+}
+
+.ant-menu-item {
+  color: var(--ant-text-color);
+}
+
+.ant-menu-item:hover {
+  color: var(--ant-primary-color);
+}
+
+.ant-menu-item-selected {
+  background-color: var(--ant-background-color-light);
+  color: var(--ant-primary-color);
+}
+
+.ant-card {
+  background-color: var(--ant-background-color-base);
+  border-color: var(--ant-border-color-base);
+}
+
+.ant-card-head {
+  background-color: var(--ant-background-color-light);
+  border-bottom-color: var(--ant-border-color-base);
+}
+
+.ant-card-head-title {
+  color: var(--ant-text-color);
+}
+
+.ant-modal-content {
+  background-color: var(--ant-background-color-base);
+}
+
+.ant-modal-header {
+  background-color: var(--ant-background-color-base);
+  border-bottom-color: var(--ant-border-color-base);
+}
+
+.ant-modal-title {
+  color: var(--ant-text-color);
+}
+
+.ant-modal-body {
+  color: var(--ant-text-color);
+}
+
+.ant-form-item-label > label {
+  color: var(--ant-text-color);
+}
+
+.ant-typography {
+  color: var(--ant-text-color);
+}
+
+.ant-divider {
+  border-top-color: var(--ant-border-color-base);
+}
+
+.ant-divider-horizontal {
+  border-top-color: var(--ant-border-color-base);
+}
+
+.ant-divider-vertical {
+  border-left-color: var(--ant-border-color-base);
+}
