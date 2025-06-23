@@ -1,9 +1,9 @@
 <!--
  * @Author: bamboo
  * @Date: 2025-06-22 17:40:26
- * @LastEditors: bamboo 815070110@qq.com
- * @LastEditTime: 2025-06-22 17:58:27
- * @FilePath: \v3-admin-vite-antd\src\App.vue
+ * @LastEditors: BambooStrop qiheng0625@gmail.com
+ * @LastEditTime: 2025-06-23 09:52:37
+ * @FilePath: \vue-admin-antd\src\App.vue
  * @Description: 
 -->
 <script lang="ts" setup>
