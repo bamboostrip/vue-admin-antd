@@ -3,8 +3,6 @@ import type { TableResponseData } from "@@/apis/tables/type"
 import type { ElMessageBoxOptions } from "element-plus"
 import type { VxeFormInstance, VxeFormProps, VxeGridInstance, VxeGridProps, VxeModalInstance, VxeModalProps } from "vxe-table"
 import { deleteTableDataApi, getTableDataApi } from "@@/apis/tables"
-import { RoleColumnSlots } from "./tsx/RoleColumnSlots"
-import { StatusColumnSlots } from "./tsx/StatusColumnSlots"
 
 defineOptions({
   // 命名当前组件
@@ -37,7 +35,7 @@ const xGridOpt: VxeGridProps = reactive({
       {
         field: "username",
         itemRender: {
-          name: "$input",
+          name: "VxeInput",
           props: {
             placeholder: "用户名",
             clearable: true
@@ -47,7 +45,7 @@ const xGridOpt: VxeGridProps = reactive({
       {
         field: "phone",
         itemRender: {
-          name: "$input",
+          name: "VxeInput",
           props: {
             placeholder: "手机号",
             clearable: true
@@ -56,20 +54,18 @@ const xGridOpt: VxeGridProps = reactive({
       },
       {
         itemRender: {
-          name: "$buttons",
-          children: [
+          name: "VxeButtonGroup",
+          options: [
             {
-              props: {
-                type: "submit",
-                content: "查询",
-                status: "primary"
-              }
+              type: "submit",
+              content: "查询",
+              status: "primary",
+              icon: "vxe-icon-search"
             },
             {
-              props: {
-                type: "reset",
-                content: "重置"
-              }
+              type: "reset",
+              content: "重置",
+              icon: "vxe-icon-refresh"
             }
           ]
         }
@@ -102,8 +98,9 @@ const xGridOpt: VxeGridProps = reactive({
     {
       field: "roles",
       title: "角色",
-      /** 自定义列与 type: "html" 的列一起使用，会产生错误，所以采用 TSX 实现 */
-      slots: RoleColumnSlots
+      slots: {
+        default: "role-column"
+      }
     },
     {
       field: "phone",
@@ -116,7 +113,9 @@ const xGridOpt: VxeGridProps = reactive({
     {
       field: "status",
       title: "状态",
-      slots: StatusColumnSlots
+      slots: {
+        default: "status-column"
+      }
     },
     {
       field: "createTime",
@@ -385,13 +384,13 @@ const crudStore = reactive({
     <el-alert
       title="数据来源"
       type="success"
-      description="由 Apifox 提供在线 Mock，数据不具备真实性，仅供简单的 CRUD 操作演示。"
+      description="由 Apifox 提供在线 Mock，数据不具备真实性，仅供简单的 CRUD 操作演示"
       show-icon
     />
     <el-alert
       title="注意"
       type="warning"
-      description="当前示例对应的 vxe-table 版本最高兼容到 4.6.25。"
+      description="当前示例对应的 Vxe Table 版本最高兼容到 4.6.25"
       show-icon
     />
     <!-- 表格 -->
@@ -404,6 +403,24 @@ const crudStore = reactive({
         <vxe-button status="danger" icon="vxe-icon-delete">
           批量删除
         </vxe-button>
+      </template>
+      <!-- 角色列 -->
+      <template #role-column="{ row, column }">
+        <el-tag
+          :type="row[column.field] === 'admin' ? 'primary' : 'warning'"
+          effect="plain"
+        >
+          {{ row[column.field] }}
+        </el-tag>
+      </template>
+      <!-- 状态列 -->
+      <template #status-column="{ row, column }">
+        <el-tag
+          :type="row[column.field] ? 'success' : 'danger'"
+          effect="plain"
+        >
+          {{ row[column.field] ? "启用" : "禁用" }}
+        </el-tag>
       </template>
       <!-- 操作 -->
       <template #row-operate="{ row }">
