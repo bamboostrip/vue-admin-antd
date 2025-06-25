@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import type { CreateOrUpdateTableRequestData, TableData } from "@@/apis/tables/type"
-import type { FormInstance, FormRules } from "element-plus"
+import type { FormRules } from "element-plus"
 import { createTableDataApi, deleteTableDataApi, getTableDataApi, updateTableDataApi } from "@@/apis/tables"
 import { usePagination } from "@@/composables/usePagination"
 import { CirclePlus, Delete, Download, Refresh, RefreshRight, Search } from "@element-plus/icons-vue"
@@ -12,6 +12,7 @@ defineOptions({
 })
 
 const loading = ref<boolean>(false)
+
 const { paginationData, handleCurrentChange, handleSizeChange } = usePagination()
 
 // #region 增
@@ -20,13 +21,18 @@ const DEFAULT_FORM_DATA: CreateOrUpdateTableRequestData = {
   username: "",
   password: ""
 }
+
 const dialogVisible = ref<boolean>(false)
-const formRef = ref<FormInstance | null>(null)
+
+const formRef = useTemplateRef("formRef")
+
 const formData = ref<CreateOrUpdateTableRequestData>(cloneDeep(DEFAULT_FORM_DATA))
+
 const formRules: FormRules<CreateOrUpdateTableRequestData> = {
   username: [{ required: true, trigger: "blur", message: "请输入用户名" }],
   password: [{ required: true, trigger: "blur", message: "请输入密码" }]
 }
+
 function handleCreateOrUpdate() {
   formRef.value?.validate((valid) => {
     if (!valid) {
@@ -44,6 +50,7 @@ function handleCreateOrUpdate() {
     })
   })
 }
+
 function resetForm() {
   formRef.value?.clearValidate()
   formData.value = cloneDeep(DEFAULT_FORM_DATA)
@@ -74,11 +81,14 @@ function handleUpdate(row: TableData) {
 
 // #region 查
 const tableData = ref<TableData[]>([])
-const searchFormRef = ref<FormInstance | null>(null)
+
+const searchFormRef = useTemplateRef("searchFormRef")
+
 const searchData = reactive({
   username: "",
   phone: ""
 })
+
 function getTableData() {
   loading.value = true
   getTableDataApi({
@@ -95,9 +105,11 @@ function getTableData() {
     loading.value = false
   })
 }
+
 function handleSearch() {
   paginationData.currentPage === 1 ? getTableData() : (paginationData.currentPage = 1)
 }
+
 function resetSearch() {
   searchFormRef.value?.resetFields()
   handleSearch()

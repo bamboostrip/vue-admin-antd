@@ -2,7 +2,7 @@
  * @Author: bamboo
  * @Date: 2025-06-22 17:40:26
  * @LastEditors: BambooStrop qiheng0625@gmail.com
- * @LastEditTime: 2025-06-23 09:52:37
+ * @LastEditTime: 2025-06-25 08:59:18
  * @FilePath: \vue-admin-antd\src\App.vue
  * @Description: 
 -->
@@ -17,6 +17,7 @@ const { initGreyAndColorWeakness } = useGreyAndColorWeakness()
 
 // 初始化主题
 initTheme()
+
 // 初始化灰色模式和色弱模式
 initGreyAndColorWeakness()
 </script>
